@@ -1,42 +1,81 @@
 import React from "react";
-import { View, Text, Image, StyleSheet } from "react-native";
-import aviao from '../../../assets/images/aviao.png'
-import camera from '../../../assets/images/camera.png'
-
+import { Text, View, Image, StyleSheet, TextInput, TouchableOpacity, Platform } from "react-native"
+import logoInsta from '../../../assets/images/logo1.png'
+import { StatusBar } from "expo-status-bar";
+ 
 export default function Header() {
     return(
-        <View style={styles.divMain}>
-            <Text style={styles.text}>Instagram</Text>
-            <View style={styles.divSecondary}>
-                <Image style={styles.image} source={ camera } />
-                <Image style={styles.image} source={ aviao } />
+        <View style={styles.containerGeral}>
+
+            <StatusBar backgroundColor="#fff" translucent={false} />
+
+            <Image 
+            source={ logoInsta }
+            style={styles.logo}
+            />
+
+            <TextInput
+            placeholder="Celular, username ou email"
+            style={styles.campo}
+            />
+
+            <TextInput
+            placeholder="Sua senha"
+            style={styles.campo}
+            />
+
+            <View style={styles.esqueceuContainer}>
+                <TouchableOpacity>
+                    <Text style={styles.esqueceuText}>Esqueceu sua senha?</Text>
+                </TouchableOpacity>
             </View>
+
+            <TouchableOpacity style={styles.loginBotao}>
+                <Text style={styles.loginText}>Acessar</Text>
+            </TouchableOpacity>
+
         </View>
     )
 }
 
 const styles = StyleSheet.create({
-    divMain: {
-        flexDirection: "row",
+    containerGeral: {
+        justifyContent: "center",
         alignItems: "center",
-        justifyContent: "space-between",
-        padding: 5,
-        backgroundColor: "#d3d3d3",
-        paddingLeft: 10,
-        paddingRight: 10
+        paddingTop: 10
     },
-    
-    text: {
-        fontSize: 20,
+    logo: {
+        marginTop: Platform.OS === 'android' ? '13%' : '20%',
+        marginBottom: Platform.OS === 'android' ? '13%' : '15%'
     },
-
-    divSecondary: {
-        flexDirection: "row",
-        gap: 20,
+    campo: {
+        width: 300,
+        height: 42,
+        backgroundColor: "#F4F3F3",
+        marginBottom: 20,
+        padding: 8,
+        borderWidth: 1,
+        borderColor: "#E0E0E0",
+        borderRadius: 5
     },
-
-    image: {
-        width: 20,
-        height: 20,
+    esqueceuContainer: {
+        width: 300,
+        alignItems: 'flex-end'
+    },
+    esqueceuText: {
+        color: "#399FFF"
+    },
+    loginBotao: {
+        backgroundColor: "#399FFF",
+        height: 42,
+        justifyContent: "center",
+        borderRadius: 5,
+        marginTop: 20
+    },
+    loginText: {
+        color: "#fff",
+        width: 300,
+        textAlign: "center"
     }
+    
 })

@@ -1,12 +1,11 @@
 import { SafeAreaView, Text, View, StatusBar } from 'react-native';
-import Header from './src/components/Header/Header';
+import Login from './src/components/Login/Login';
 
 export default function App() {
   return (
     <SafeAreaView>
       <StatusBar />
-      <Header />
+      <Login />
     </SafeAreaView>
   );
 }
-
